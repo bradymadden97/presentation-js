@@ -1,4 +1,4 @@
-	(function(){
+(function(){
 		var presentationwrapper = document.createElement("div");
 		var presentationclose = document.createElement("div");
 		var presentationcontainer = document.createElement("div");
@@ -26,19 +26,22 @@
 			});
 		}
 	})();
+	
 	function presentationClose(){
 		document.getElementsByTagName("BODY")[0].style.overflow = "auto";
 		document.getElementById("presentation-wrapper").classList.remove("presentation-show");
 		document.getElementById("presentation-container").innerHTML = "";
 	}
 	function presentationMode(img){
+		var viewwidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+		var viewheight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 		var showimg = document.createElement("img");
 		showimg.src = img.src;
-		showimg.height = img.naturalHeight;
+		showimg.style.maxWidth = viewwidth;
+		showimg.style.maxHeight = viewheight;
 		showimg.width = img.naturalWidth;
 		showimg.classList.add("presentation-image");
 		document.getElementsByTagName("BODY")[0].style.overflow = "hidden";
 		document.getElementById("presentation-wrapper").classList.add("presentation-show");
 		document.getElementById("presentation-container").appendChild(showimg);	
 	}
-	
